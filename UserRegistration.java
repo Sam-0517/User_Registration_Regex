@@ -37,7 +37,7 @@ public class UserRegistration {
 	}
 
 	public String passwordCheck(String password){
-		String regex = "^[A-Za-z0-9]{8,}$";
+		String regex = "^[(A-Z){1,}a-z(0-9){*}]{8,}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(password);
 		if(matcher.matches()){
@@ -77,7 +77,7 @@ public class UserRegistration {
 		System.out.println("Mobile Number is:- "+number);
 
 		String password;
-		System.out.println("Enter password with having minimum 8 character");
+		System.out.println("Enter password with having minimum 8 character, Atleast 1 Uppercase letter");
 		password = scan.next();
 		String pass = obj.passwordCheck(password);
 		System.out.println("Password is :- "+pass);
