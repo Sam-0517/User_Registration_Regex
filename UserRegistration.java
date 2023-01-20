@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 
-	public String FirstName(String name) {
+	public String Name(String name) {
 		String regex = "[A-Z][a-z]{2,}";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(name);
@@ -14,6 +14,17 @@ public class UserRegistration {
 			return name;
 		}
 		String fail = "No match found, Please Enter correct validations for name...";
+		return fail;
+	}
+	
+	public String email(String email){
+		String regex = "[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(email);
+		if(matcher.matches()){
+			return email;
+		}
+		String fail = "No match found, Please Enter correct validations for Email...";
 		return fail;
 	}
 
@@ -26,13 +37,19 @@ public class UserRegistration {
 		String firstName;
 		System.out.println("Enter the first name, Start with capital letter and has min 3 letter :-");
 		firstName = scan.next();
-		String firstname = obj.FirstName(firstName);
+		String firstname = obj.Name(firstName);
 		System.out.println("First Name is:- "+firstname);
 		
 		String lastName;
 		System.out.println("Enter the last name, Start with capital letter and has min 3 letter :-");
 		lastName = scan.next();
-		String lastname = obj.FirstName(lastName);
-		System.out.println("Last Name is:- "+lastName);
+		String lastname = obj.Name(lastName);
+		System.out.println("Last Name is:- "+lastname);
+		
+		String emailId;
+		System.out.println("Enter your email Id");
+		emailId = scan.next();
+		String email = obj.email(emailId);
+		System.out.println("Email Id is :- "+email);
 	}
 }
