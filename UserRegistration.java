@@ -1,11 +1,8 @@
 package com.bridgelabz.regex.usre_registration;
-
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 public class UserRegistration {
-
 	public String Name(String name) {
 		String regex = "[A-Z][a-z]{2,}";
 		Pattern pattern = Pattern.compile(regex);
@@ -39,12 +36,22 @@ public class UserRegistration {
 		return fail;
 	}
 
+	public String passwordCheck(String password){
+		String regex = "^[A-Za-z0-9]{8,}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(password);
+		if(matcher.matches()){
+			return password;
+		}
+		String fail = "No match found, Please Enter correct validations for Password...";
+		return fail;
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("WELCOME TO USER REGISTRATION PROGRAM USING REGEX");
 		Scanner scan = new Scanner(System.in);
 		UserRegistration obj = new UserRegistration();
-
 		String firstName;
 		System.out.println("Enter the first name, Start with capital letter and has min 3 letter :-");
 		firstName = scan.next();
@@ -68,6 +75,11 @@ public class UserRegistration {
 		mobNumber = scan.next();
 		String number = obj.mobileNumber(mobNumber);
 		System.out.println("Mobile Number is:- "+number);
-		
+
+		String password;
+		System.out.println("Enter password with having minimum 8 character");
+		password = scan.next();
+		String pass = obj.passwordCheck(password);
+		System.out.println("Password is :- "+pass);
 	}
 }
